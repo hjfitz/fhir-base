@@ -1,0 +1,29 @@
+version: '3'
+services:
+  pg:
+    container_name: pg
+    environment:
+      POSTGRES_USER: fyp
+      POSTGRES_DATABASE: fyp
+      POSTGRES_PASSWORD: donotposttogit
+      ALLOW_IP_RANGE: 0.0.0.0/0
+    image: postgres:10
+    build: ./db
+    ports:
+      - "5432:5432"
+    volumes:
+    - /docker-entrypoint-initdb.d
+  fyp:
+    container_name: fyp
+    restart: always
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      DATABASE_URL: postgresql://fyp:donotposttogit@pg:5432/fyp
+    links:
+      - pg
+    command: bash -c 'while !</dev/tcp/pg/5432; do sleep 1; done; npm start'
+    depends_on:
+      - pg

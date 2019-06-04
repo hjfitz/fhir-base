@@ -1,0 +1,28 @@
+{
+  "name": "fhir-base",
+  "version": "1.0.0",
+  "description": "FHIR base code to extend",
+  "main": "lib/app.js",
+  "repository": "git@github.com:hjfitz/fhir-base.git",
+  "author": "Harry <hfitz83@gmail.com>",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "crypto-js": "^3.1.9-1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "helmet": "^3.18.0",
+    "knex": "^0.17.3",
+    "morgan": "^1.9.1",
+    "pg": "^7.11.0",
+    "shortid": "^2.2.14"
+  },
+  "scripts": {
+    "start": "node lib/app",
+    "dev": "nodemon lib/app"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
+}
